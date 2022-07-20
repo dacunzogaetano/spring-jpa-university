@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<th:block th:replace="fragments :: risorse-head"></th:block>
+	<title>Courses</title>
+</head>
+
+<body>
+	<div th:replace="fragments :: navbar('courses')"></div>
+	<div class="container text-center w-75 mt-3">
+		<h1>Courses</h1>
+		<div class="container" th:if="${coursesList.size()>0}">
+			<table class="table mb-5">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Descrizione</th>
+						<th>Periodo</th>
+						<th>Anno</th>
+						<th>CFU</th>
+						<th>Sito Web</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="crs : ${coursesList}">
+						<td th:text="${crs.name}"></td>
+						<td th:text="${crs.description}"></td>
+						<td th:text="${crs.period}"></td>
+						<td th:text="${crs.year}"></td>
+						<td th:text="${crs.cfu}"></td>
+						<td th:text="${crs.website}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<p th:unless="${coursesList.size()>0}" class="text-center">Nessun corso trovato</p>
+</body>
+
+</html>

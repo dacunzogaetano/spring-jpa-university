@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<th:block th:replace="fragments :: risorse-head"></th:block>
+	<title>Teachers</title>
+</head>
+
+<body>
+	<div th:replace="fragments :: navbar('teachers')"></div>
+	<div class="container text-center w-75 mt-3">
+		<h1>Teachers</h1>
+		<div class="container" th:if="${teacherList.size()>0}">
+			<table class="table mb-5">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Numero telefonico</th>
+						<th>Indirizzo mail</th>
+						<th>Indirizzo Ufficio</th>
+						<th>Numero Ufficio</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="t : ${teacherList}">
+						<td th:text="${t.name}"></td>
+						<td th:text="${t.surname}"></td>
+						<td th:text="${t.phone}"></td>
+						<td th:text="${t.email}"></td>
+						<td th:text="${t.officeAddress}"></td>
+						<td th:text="${t.officeNumber}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p th:unless="${teacherList.size()>0}" class="text-center">Nessun insegnante trovato</p>
+</body>
+
+</html>

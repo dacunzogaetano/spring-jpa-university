@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<th:block th:replace="fragments :: risorse-head"></th:block>
+	<title>Degrees</title>
+</head>
+
+<body>
+	<div th:replace="fragments :: navbar('degrees')"></div>
+	<div class="container text-center w-75 mt-3">
+		<h1>Degrees</h1>
+		<div class="container" th:if="${degreesList.size()>0}">
+		<table class="table mb-5">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Livello</th>
+					<th>Indirizzo</th>
+					<th>Indirizzo mail</th>
+					<th>Sito web</th>
+					<th>Nome dipartimento</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dg : ${degreesList}">
+					<td th:text="${dg.name}"></td>
+					<td th:text="${dg.level}"></td>
+					<td th:text="${dg.address}"></td>
+					<td th:text="${dg.email}"></td>
+					<td th:text="${dg.website}"></td>
+					<td th:text="${dg.department.name}"></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+    <p th:unless="${degreesList.size()>0}" class="text-center">Nessun corso trovato</p>
+</body>
+
+</html>
